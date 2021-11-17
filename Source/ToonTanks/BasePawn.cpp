@@ -5,6 +5,7 @@
 #include "Components/CapsuleComponent.h"
 #include "Components/StaticMeshComponent.h"
 #include "DrawDebugHelpers.h"
+#include "Projectile.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -36,12 +37,8 @@ void ABasePawn::RotateTurret(FVector LookAtTarget)
 
 void ABasePawn::Fire()
 {
-	DrawDebugSphere(
-		GetWorld(), 
+	GetWorld()->SpawnActor<AProjectile>(
+		ProjectileClass, 
 		ProjectileSpawnPoint->GetComponentLocation(), 
-		6.f, 
-		8,
-		FColor::Red,
-		false,
-		3.f);
+		ProjectileSpawnPoint->GetComponentRotation());
 }
