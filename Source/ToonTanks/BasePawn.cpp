@@ -6,6 +6,7 @@
 #include "Components/StaticMeshComponent.h"
 #include "DrawDebugHelpers.h"
 #include "Projectile.h"
+#include "HealthComponent.h"
 
 // Sets default values
 ABasePawn::ABasePawn()
@@ -37,8 +38,10 @@ void ABasePawn::RotateTurret(FVector LookAtTarget)
 
 void ABasePawn::Fire()
 {
-	GetWorld()->SpawnActor<AProjectile>(
+	auto Projectile = GetWorld()->SpawnActor<AProjectile>(
 		ProjectileClass, 
 		ProjectileSpawnPoint->GetComponentLocation(), 
 		ProjectileSpawnPoint->GetComponentRotation());
+
+	Projectile->SetOwner(this);
 }
