@@ -24,6 +24,12 @@ void ATower::Tick(float DeltaTime)
     }
 }
 
+void ATower::HandleDestruction()
+{
+    Super::HandleDestruction();
+    Destroy();
+}
+
 bool ATower::CheckInRange()
 {
     if(Tank)
