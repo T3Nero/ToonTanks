@@ -22,11 +22,25 @@ protected:
 
 	virtual void BeginPlay() override;
 
+	// Creates StartGame Event in Blueprint
+	UFUNCTION(BlueprintImplementableEvent)
+	void StartGame();
+
+	UFUNCTION(BlueprintImplementableEvent)
+	void GameOver(bool bWonGame);
+
+
 private:
 
 	class ATank* Tank;
 	class AToonTanks_PlayerController* ToonTanksPlayerController;
 	void HandleGameStart();
 
+	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"))
 	float StartGameDelay = 3.f;
+
+	int32 EnemyTowers = 0;
+	int32 GetEnemyTowerCount();
+
+
 };

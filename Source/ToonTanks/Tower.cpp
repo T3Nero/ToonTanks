@@ -45,7 +45,12 @@ bool ATower::CheckInRange()
 
 void ATower::CheckFireCondition()
 {
-    if(CheckInRange())
+    if(Tank == nullptr)
+    {
+        return;
+    }
+
+    if(CheckInRange() && Tank->bAlive)
     {
         Fire();
     }

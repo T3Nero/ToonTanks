@@ -21,6 +21,7 @@ protected:
 
 private:
 
+
 	UPROPERTY(EditDefaultsOnly, Category = "Components")
 	UStaticMeshComponent* ProjectileMesh;
 
@@ -38,6 +39,23 @@ private:
 
 	UPROPERTY(EditAnywhere)
 	float Damage = 50.f;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class UParticleSystem* HitParticle;
+
+	UPROPERTY(VisibleAnywhere, Category = "Combat")
+	class UParticleSystemComponent* ParticleSystem;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	class USoundBase* LaunchSound;
+
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	USoundBase* HitSound;
+
+	// UE 4.26+ UMatineeCameraShake
+	UPROPERTY(EditAnywhere, Category = "Combat")
+	TSubclassOf<class UMatineeCameraShake> HitCameraShakeClass;
+	
 public:	
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
